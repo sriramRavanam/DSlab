@@ -27,11 +27,16 @@ int main(){
     t1->next = NULL;
     
 
-
+    //initial display
     display(head);
     printf("\n");
 
-    insert(head,"Priyanka");
+    //insert and display
+    insert(head,"AAkash");
+    display(head);
+
+    //deleting first element
+    delete(head,"Akanksha");
     display(head);
 //start
     //char *n1;
@@ -56,7 +61,6 @@ int main(){
             delete(t1,n1);
             display(t1);
             break;
-
         case 3:
             exit(1);    
         
@@ -69,28 +73,44 @@ int main(){
 void insert(struct node *ptr,char *n){
     struct node *temp = (struct node *)malloc(sizeof(struct node));
     temp->name = n;
-    if(strcmp((ptr->name),(temp->name))>0){
-        temp->next = ptr->next;
+    if(strcmp((ptr->name),(temp->name))>=0){
+        printf("hi\n");
+        temp->next = ptr;
         ptr = temp;
-        return;
     }
     else
     {
-        /* code */
+        
     
     
         while(strcmp((temp->name),(ptr->next->name))>0){
             ptr=ptr->next;
         }
+            temp->next = ptr->next;
+            ptr->next = temp;
     }
 
-    temp->next = ptr->next;
-    ptr->next = temp;
+    //temp->next = ptr->next;
+    //ptr->next = temp;
 }
 void display(struct node *ptr){
     while(ptr != NULL){
         
         printf("%s \n",(ptr->name));
         ptr = ptr->next;
+    }
+    printf("\n");
+}
+
+void delete(struct node *ptr,char *n){
+    if(strcmp(ptr->name,n)==0){
+        //printf("hi\n");
+        ptr=ptr->next;
+    }
+    else{  
+        while(strcmp(ptr->next->name,n)!=0){
+            ptr=ptr->next;
+        }
+        ptr->next = ptr->next->next;
     }
 }
