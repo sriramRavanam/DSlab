@@ -6,12 +6,12 @@ struct node{
     struct node *next;
 };
 
-void insert(struct node *,char *);
-void delete(struct node *,char *);
+void insert(struct node **,char *);
+void delete(struct node **,char *);
 void display(struct node *);
 
 int main(){
-    struct node *ptr = (struct node *)malloc(3*sizeof(struct node));
+    struct node ((*ptr)) = (struct node *)malloc(3*sizeof(struct node));
     struct node *head = ptr;
     struct node *t1 = ptr;
     
@@ -32,11 +32,11 @@ int main(){
     printf("\n");
 
     //insert and display
-    insert(head,"AAkash");
+    insert(&head,"AAkash");
     display(head);
 
     //deleting first element
-    delete(head,"Akanksha");
+    delete(&head,"Akanksha");
     display(head);
 //start
     //char *n1;
@@ -70,30 +70,30 @@ int main(){
     }*/
 }
 
-void insert(struct node *ptr,char *n){
+void insert(struct node *(*ptr),char *n){
     struct node *temp = (struct node *)malloc(sizeof(struct node));
     temp->name = n;
-    if(strcmp((ptr->name),(temp->name))>=0){
+    if(strcmp(((*ptr)->name),(temp->name))>=0){
         printf("hi\n");
-        temp->next = ptr;
-        ptr = temp;
+        temp->next = (*ptr);
+        (*ptr) = temp;
     }
     else
     {
         
     
     
-        while(strcmp((temp->name),(ptr->next->name))>0){
-            ptr=ptr->next;
+        while(strcmp((temp->name),((*ptr)->next->name))>0){
+            (*ptr)=(*ptr)->next;
         }
-            temp->next = ptr->next;
-            ptr->next = temp;
+            temp->next = (*ptr)->next;
+            (*ptr)->next = temp;
     }
 
     //temp->next = ptr->next;
     //ptr->next = temp;
 }
-void display(struct node *ptr){
+void display(struct node (*ptr)){
     while(ptr != NULL){
         
         printf("%s \n",(ptr->name));
@@ -102,15 +102,15 @@ void display(struct node *ptr){
     printf("\n");
 }
 
-void delete(struct node *ptr,char *n){
-    if(strcmp(ptr->name,n)==0){
+void delete(struct node *(*ptr),char *n){
+    if(strcmp((*ptr)->name,n)==0){
         //printf("hi\n");
-        ptr=ptr->next;
+        (*ptr)=(*ptr)->next;
     }
     else{  
-        while(strcmp(ptr->next->name,n)!=0){
-            ptr=ptr->next;
+        while(strcmp((*ptr)->next->name,n)!=0){
+            (*ptr)=(*ptr)->next;
         }
-        ptr->next = ptr->next->next;
+        (*ptr)->next = (*ptr)->next->next;
     }
 }
