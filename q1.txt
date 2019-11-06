@@ -1,6 +1,24 @@
+Tower of Hanoi/ recursive binary search
+
+infix to postfix using stacks
+
 a call centre , has to hold the phone calls from customers and provide service based on the arrival time of the calls, write a c program to simulate this system using appropriate DS. add and remove phone calls in appropriate order for their service.
 
 
 To create a singly linked list that maintains a list of names in alphabetical order. implement the following operations in the list. 
 a. Insert new name
 b. Delete a specified name
+
+
+WACP, to simulate worling of circular queue as a structure , use array of structure.
+Start and end must be identified by empty element
+
+
+write a C , to maintain a stack of integers using linked list implementation method
+
+
+insert and Delete from a doubly linked list
+
+Binary Search Tree
+
+
